@@ -1,26 +1,23 @@
+This Python code performs several data preprocessing and analysis tasks using the pandas, scikit-learn (for PCA), matplotlib, and numpy libraries. Here's a breakdown of each part:
 
-This code implements a Transformer model, a deep learning architecture primarily used in natural language processing tasks like machine translation. 
+Getting Data: Reads stock data from a CSV file into a pandas DataFrame.
 
-The Transformer consists of several components:
+Sorting and Identifying Unique Names: Identifies unique names from the 'Name' column of the DataFrame and sorts them alphabetically.
 
-Layer Normalization: A normalization technique applied to the output of each sub-layer in the Transformer.
+Filtering Data Based on Date Criteria: Removes data entries that fall outside the specified date range (1st July 2014 to 30th June 2017) for each unique name.
 
-Feed Forward Block: A feedforward neural network layer within the Transformer architecture.
+Finding Common Dates: Determines the set of dates common to all remaining names after filtering.
 
-Input Embeddings: Embedding layers to convert input tokens into continuous representations.
+Pivoting Data: Creates a pivoted DataFrame where columns represent stock names, rows represent dates, and the values are closing prices.
 
-Positional Encoding: Provides positional information to the input embeddings, allowing the model to understand the order of words in a sequence.
+Calculating Percentage Change: Computes the percentage change in closing prices relative to the previous date for each stock.
 
-Multi-Head Attention Block: A mechanism that attends to different positions with multiple sets of parameters in parallel, enabling the model to focus on different parts of the input.
+Performing PCA (Principal Component Analysis): Applies PCA to the percentage change data to extract principal components, sorts them based on eigenvalues, and prints the top 5 principal components.
 
-Encoder Block: A component of the Transformer encoder, which processes the input sequence.
+Explained Variance Ratios: Calculates and displays the percentage of variance explained by the first principal component and plots the explained variance ratios for the first 20 principal components.
 
-Encoder: Stacks multiple encoder blocks together to create the encoder part of the Transformer.
+Cumulative Variance Ratios: Computes cumulative variance ratios and plots them, marking the principal component where the cumulative variance ratio is greater than or equal to 95%.
 
-Decoder Block: A component of the Transformer decoder, which generates the output sequence.
+Overall, this code aims to preprocess and analyze stock data, including filtering, calculating percentage changes, and performing PCA to understand the variance explained by different principal components. Additionally, it visualizes the variance ratios and cumulative variance ratios to provide insights into the data's dimensionality and variability.
 
-Decoder: Stacks multiple decoder blocks together to create the decoder part of the Transformer.
 
-Projection Layer: A linear layer followed by a log-softmax operation that maps the model's output to a probability distribution over the vocabulary.
-
-Transformer: Combines the encoder, decoder, and other components into a complete model.
